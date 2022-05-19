@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product Page{% endblock %}
+
+{% block body %}
+    {% include 'partials/banner.html.twig' %}
+
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-3 col-md-12">
+                <div class="border-bottom mb-4 pb-4">
+                    <h5 class="font-weight-semi-bold mb-4">Filter by product name </h5>
+                    {{ form_start(form) }}
+                        <div class="input-group">
+                            {{ form_row(form.string) }}
+                            <div class="input-group-append mb-3">
+                                <button type="submit" class="input-group-text bg-transparent text-primary"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="border-bottom mb-4 pb-4"></div>
+                        <h5 class="font-weight-semi-bold mb-4">Filter by product size </h5>
+                        {{ form_widget(form.sizes)}}
+
+                    {{ form_end(form) }}
+                </div>
+
+            </div>
+            <div class="col-lg-9 col-md-12">
+                <div class="row pb-3" id="products">
+                    {# Product Page Products #}
+                    {% for product in products %}
+                        {% include 'product/single.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
